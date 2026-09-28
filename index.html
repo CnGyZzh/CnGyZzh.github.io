@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07111f" />
+    <meta name="description" content="GitHub Level — CnGyZzh 的个人主页、项目索引与开源记录。" />
+    <title>GitHub Level · CnGyZzh</title>
+    <link rel="canonical" href="https://cngyzzh.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cngyzzh.github.io/" />
+    <meta property="og:title" content="GitHub Level · Open-source dashboard" />
+    <meta property="og:description" content="A small dashboard for a growing GitHub trail — projects, activity, releases, and notes." />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="GitHub Level · Open-source dashboard" />
+    <meta name="twitter:description" content="Projects, activity, releases, and notes from CnGyZzh." />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"CnGyZzh","url":"https://github.com/CnGyZzh","sameAs":["https://github.com/CnGyZzh"],"knowsAbout":["Android","Open Source","Material You"]}</script>
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjEyMCIgZmlsbD0iIzA3MTExZiIvPjxwYXRoIGQ9Ik0xMTIgMzUyVjE2MGg2MHYxMjhoNjB2LTk2aDYwdjk2aDYwVjE2MGg2MHYxOTJIMTEyWiIgZmlsbD0iIzIyZDNlZSIvPjwvc3ZnPgo=" type="image/svg+xml" />
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+
+:root {
+  --bg: #07111f;
+  --bg-deep: #050b14;
+  --panel: rgba(12, 28, 48, 0.74);
+  --panel-strong: #0d2037;
+  --line: rgba(145, 177, 207, 0.16);
+  --line-bright: rgba(145, 177, 207, 0.3);
+  --text: #eff7ff;
+  --muted: #92a8bd;
+  --subtle: #61768c;
+  --cyan: #22d3ee;
+  --blue: #60a5fa;
+  --violet: #8b5cf6;
+  --green: #75e0a1;
+  --orange: #f9a66d;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; min-width: 320px; color: var(--text); background: var(--bg); font-family: Manrope, 'Noto Sans SC', sans-serif; line-height: 1.55; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+button, a { -webkit-tap-highlight-color: transparent; }
+::selection { color: #05101d; background: var(--cyan); }
+
+.ambient { position: fixed; z-index: -2; pointer-events: none; filter: blur(2px); border-radius: 999px; opacity: .42; }
+.ambient-a { width: 620px; height: 620px; top: -240px; right: -150px; background: radial-gradient(circle, rgba(37, 99, 235, .35), transparent 66%); }
+.ambient-b { width: 560px; height: 560px; left: -270px; top: 980px; background: radial-gradient(circle, rgba(124, 58, 237, .24), transparent 68%); }
+.grid-overlay { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .26; background-image: linear-gradient(rgba(125, 165, 201, .07) 1px, transparent 1px), linear-gradient(90deg, rgba(125, 165, 201, .07) 1px, transparent 1px); background-size: 64px 64px; mask-image: linear-gradient(to bottom, black 0%, transparent 85%); }
+
+.section-shell { width: min(1160px, calc(100% - 64px)); margin: 0 auto; }
+.site-header { position: relative; z-index: 5; width: min(1320px, calc(100% - 64px)); margin: 0 auto; height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 28px; border-bottom: 1px solid var(--line); }
+.brand { display: inline-flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -.04em; font-size: 18px; white-space: nowrap; }
+.brand em { color: var(--cyan); font-style: normal; }
+.brand-mark { width: 24px; height: 24px; display: flex; align-items: end; gap: 3px; padding: 3px; border: 1px solid rgba(34,211,238,.54); border-radius: 7px; background: rgba(34,211,238,.08); }
+.brand-mark span { width: 4px; background: var(--cyan); border-radius: 2px; box-shadow: 0 0 8px rgba(34, 211, 238, .6); }
+.brand-mark span:nth-child(1) { height: 8px; opacity: .6; }.brand-mark span:nth-child(2) { height: 14px; opacity: .8; }.brand-mark span:nth-child(3) { height: 18px; }
+.main-nav { display: flex; align-items: center; gap: 28px; margin-left: auto; }
+.main-nav a, .header-link { color: var(--muted); font: 500 11px/1 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .12em; transition: color .18s ease; }
+.main-nav a:hover, .header-link:hover { color: var(--cyan); }
+.header-link { color: var(--text); padding: 12px 16px; border: 1px solid var(--line-bright); border-radius: 6px; }
+.arrow { color: var(--cyan); margin-left: 6px; }
+
+.hero { min-height: 655px; display: grid; grid-template-columns: 1.08fr .92fr; gap: 76px; align-items: center; padding: 80px 0 92px; }
+.eyebrow { margin: 0 0 24px; color: var(--cyan); font: 500 11px/1 'DM Mono', monospace; letter-spacing: .16em; text-transform: uppercase; }
+.eyebrow-year { color: var(--subtle); }
+.pulse-dot { display: inline-block; width: 7px; height: 7px; margin-right: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 5px rgba(117, 224, 161, .1), 0 0 14px rgba(117,224,161,.8); vertical-align: 1px; }
+h1, h2, h3, p { margin-top: 0; }
+h1 { max-width: 760px; margin-bottom: 26px; font-size: clamp(48px, 7vw, 86px); line-height: .99; letter-spacing: -.075em; font-weight: 800; }
+h1 span { color: transparent; background: linear-gradient(105deg, var(--cyan), var(--blue) 48%, var(--violet)); background-clip: text; -webkit-background-clip: text; }
+.hero-lede { max-width: 540px; margin-bottom: 34px; color: var(--muted); font-family: 'Noto Sans SC', sans-serif; font-size: 16px; line-height: 1.9; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 42px; }
+.button { display: inline-flex; align-items: center; gap: 16px; padding: 14px 18px; border-radius: 6px; font: 700 12px/1 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .07em; transition: transform .18s var(--ease-out), box-shadow .18s ease, border-color .18s ease; }
+.button:hover { transform: translateY(-3px); }.button:active { transform: scale(.97); }
+.button-primary { color: #04111d; background: var(--cyan); box-shadow: 0 12px 28px rgba(34,211,238,.15); }.button-primary:hover { box-shadow: 0 16px 34px rgba(34,211,238,.27); }
+.button-ghost { border: 1px solid var(--line-bright); color: var(--text); }.button-ghost:hover { border-color: var(--cyan); }
+.hero-meta { display: flex; flex-wrap: wrap; gap: 16px; color: var(--subtle); font: 11px 'DM Mono', monospace; }.hero-meta i { display: inline-block; width: 5px; height: 5px; margin: 0 7px 1px 0; border-radius: 50%; background: var(--blue); }
+
+.hero-console { align-self: center; overflow: hidden; border: 1px solid rgba(118, 165, 204, .25); border-radius: 12px; background: linear-gradient(140deg, rgba(17, 43, 69, .88), rgba(7, 19, 33, .92)); box-shadow: 0 30px 80px rgba(0, 0, 0, .22), inset 0 1px rgba(255,255,255,.06); transform: rotate(2deg); transition: transform .35s var(--ease-out); }.hero-console:hover { transform: rotate(0deg) translateY(-5px); }
+.console-topbar, .console-footer { display: flex; align-items: center; padding: 14px 18px; border-bottom: 1px solid var(--line); font: 10px 'DM Mono', monospace; }.console-footer { border-top: 1px solid var(--line); border-bottom: 0; color: var(--subtle); gap: 8px; }.console-footer strong { color: var(--muted); font-weight: 400; }.footer-divider { flex: 1; }
+.window-dot { width: 7px; height: 7px; border-radius: 50%; margin-right: 6px; }.window-dot.red { background: #ff718a; }.window-dot.yellow { background: #f6c85f; }.window-dot.green { background: #73e29f; }.console-label { margin-left: 9px; color: var(--muted); }.console-status { margin-left: auto; color: var(--green); letter-spacing: .1em; }.console-body { padding: 26px 22px; font: 12px/2.15 'DM Mono', monospace; }.console-line { display: flex; }.line-number { width: 34px; color: #456179; user-select: none; }.key { color: #9db9d4; font-weight: 400; }.value { color: #a7d5ff; font-weight: 400; }.number { color: var(--orange); font-weight: 400; }.cyan { color: var(--cyan); }.muted { color: #55748f; }.cursor { display: inline-block; width: 7px; height: 14px; margin-left: 6px; background: var(--cyan); vertical-align: -2px; animation: blink 1.1s steps(2) infinite; }@keyframes blink { 50% { opacity: 0; } }
+
+.metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }.metric { min-height: 130px; padding: 24px 26px 20px 0; border-right: 1px solid var(--line); }.metric + .metric { padding-left: 26px; }.metric:last-child { border-right: 0; }.metric-label { display: block; color: var(--subtle); font: 10px 'DM Mono', monospace; letter-spacing: .11em; }.metric strong { display: block; margin: 12px 0 4px; color: var(--text); font-size: 29px; letter-spacing: -.05em; }.metric-note { color: var(--muted); font-size: 12px; }.metric-accent strong { color: var(--cyan); font-size: 21px; margin-top: 17px; }
+
+.content-section { padding-top: 136px; }.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 40px; margin-bottom: 40px; }.section-heading .eyebrow { margin-bottom: 16px; }.section-heading h2 { max-width: 620px; margin-bottom: 0; font-size: clamp(30px, 4vw, 50px); line-height: 1.05; letter-spacing: -.065em; }.section-intro { max-width: 340px; margin-bottom: 3px; color: var(--muted); font-family: 'Noto Sans SC', sans-serif; font-size: 13px; line-height: 1.8; }
+.project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }.project-card { position: relative; min-height: 410px; padding: 30px; overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); transition: transform .3s var(--ease-out), border-color .3s ease, box-shadow .3s ease; }.project-card::after { position: absolute; content: ''; width: 230px; height: 230px; right: -90px; bottom: -120px; border-radius: 50%; background: rgba(34,211,238,.11); filter: blur(4px); transition: transform .3s ease; }.project-card:hover { transform: translateY(-7px); border-color: rgba(34,211,238,.4); box-shadow: 0 24px 48px rgba(0,0,0,.18); }.project-card:hover::after { transform: scale(1.3); }.project-card-secondary { background: linear-gradient(135deg, rgba(22, 31, 64, .84), rgba(11, 24, 44, .8)); }.project-card-secondary::after { background: rgba(139,92,246,.13); }
+.project-card-top { display: flex; justify-content: space-between; margin-bottom: 45px; color: var(--subtle); font: 11px 'DM Mono', monospace; }.project-arrow { color: var(--cyan); font-size: 20px; line-height: .6; }.project-icon { width: 48px; height: 48px; display: grid; place-items: center; margin-bottom: 27px; border-radius: 12px; font-size: 25px; }.icon-monet { color: var(--cyan); background: rgba(34,211,238,.12); border: 1px solid rgba(34,211,238,.22); }.icon-level { color: #bda8ff; background: rgba(139,92,246,.15); border: 1px solid rgba(139,92,246,.25); }.project-type { margin-bottom: 10px; color: var(--cyan); font: 10px 'DM Mono', monospace; letter-spacing: .1em; }.project-card-secondary .project-type { color: #bda8ff; }.project-card h3 { margin-bottom: 12px; font-size: 30px; letter-spacing: -.06em; }.project-card > p:not(.project-type) { max-width: 470px; min-height: 74px; margin-bottom: 21px; color: var(--muted); font-family: 'Noto Sans SC', sans-serif; font-size: 14px; line-height: 1.8; }.tag-row { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 7px; }.tag-row span { padding: 6px 9px; border: 1px solid var(--line); border-radius: 4px; color: var(--muted); font: 10px 'DM Mono', monospace; }.card-bottom { position: absolute; z-index: 1; right: 30px; bottom: 30px; left: 30px; display: flex; gap: 18px; padding-top: 17px; border-top: 1px solid var(--line); }.card-bottom a { color: var(--text); font: 11px 'DM Mono', monospace; }.card-bottom a:hover { color: var(--cyan); }.card-bottom span { color: var(--cyan); margin-left: 4px; }
+
+.activity-layout { display: grid; grid-template-columns: 1.42fr .8fr; gap: 18px; }.activity-visual, .activity-notes { border: 1px solid var(--line); border-radius: 10px; background: rgba(10, 25, 43, .64); }.activity-visual { padding: 24px; }.visual-header { display: flex; justify-content: space-between; margin-bottom: 22px; color: var(--text); font: 11px 'DM Mono', monospace; letter-spacing: .08em; }.visual-period { color: var(--subtle); }.chart-wrap { position: relative; min-height: 245px; padding: 17px 12px 0 34px; overflow: hidden; border-radius: 6px; background: linear-gradient(180deg, rgba(15, 39, 64, .72), rgba(8, 22, 38, .78)); }.activity-chart { display: block; width: 100%; height: 204px; overflow: visible; }.chart-grid line { stroke: rgba(145, 177, 207, .13); stroke-dasharray: 3 8; stroke-width: 1; }.chart-area { fill: url(#chart-fill); }.chart-line { fill: none; stroke: var(--cyan); stroke-width: 3; vector-effect: non-scaling-stroke; filter: drop-shadow(0 0 7px rgba(34, 211, 238, .38)); }.chart-points circle { fill: var(--bg); stroke: var(--cyan); stroke-width: 2; vector-effect: non-scaling-stroke; }.chart-y-labels { position: absolute; top: 18px; bottom: 39px; left: 0; display: flex; flex-direction: column; justify-content: space-between; color: #54728b; font: 9px 'DM Mono', monospace; }.chart-months { display: flex; justify-content: space-between; padding: 6px 0 0; color: #54728b; font: 9px 'DM Mono', monospace; }.visual-caption { display: flex; align-items: center; gap: 8px; margin-top: 18px; color: var(--subtle); font: 10px 'DM Mono', monospace; }.caption-mark { width: 7px; height: 7px; background: var(--cyan); border-radius: 50%; }.visual-caption a { margin-left: auto; color: var(--cyan); }.activity-notes { padding: 24px 24px 0; }.note-block { display: grid; grid-template-columns: 31px 1fr; gap: 13px; padding: 0 0 24px; margin-bottom: 24px; border-bottom: 1px solid var(--line); }.note-block:last-child { margin-bottom: 0; border-bottom: 0; }.note-index { display: grid; place-items: center; width: 25px; height: 25px; border: 1px solid rgba(34,211,238,.35); border-radius: 50%; color: var(--cyan); font: 10px 'DM Mono', monospace; }.note-block h3 { margin-bottom: 8px; font-size: 15px; letter-spacing: -.02em; }.note-block p { margin-bottom: 0; color: var(--muted); font-family: 'Noto Sans SC', sans-serif; font-size: 12px; line-height: 1.8; }
+
+.archive-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; }.archive-card { display: flex; align-items: center; gap: 14px; padding: 18px; border: 1px solid var(--line); border-radius: 8px; background: rgba(12, 28, 48, .58); transition: transform .2s ease, border-color .2s ease, background .2s ease; }.archive-card:hover { transform: translateY(-4px); border-color: rgba(34,211,238,.38); background: rgba(17, 43, 69, .7); }.archive-icon { display: grid; place-items: center; width: 35px; height: 35px; border: 1px solid rgba(96,165,250,.26); border-radius: 6px; color: var(--cyan); font-size: 18px; }.archive-card b, .archive-card small { display: block; }.archive-card b { margin-bottom: 3px; font: 12px 'DM Mono', monospace; }.archive-card small { color: var(--muted); font-size: 11px; }.archive-arrow { margin-left: auto; color: var(--cyan); }
+
+.site-footer { display: flex; justify-content: space-between; align-items: end; gap: 28px; margin-top: 150px; padding: 34px 0 42px; border-top: 1px solid var(--line); }.footer-kicker { color: var(--cyan); font: 10px 'DM Mono', monospace; letter-spacing: .12em; }.site-footer p { margin: 10px 0 0; color: var(--muted); font-size: 13px; }.footer-right { display: flex; flex-wrap: wrap; align-items: center; justify-content: end; gap: 20px; color: var(--subtle); font: 10px 'DM Mono', monospace; }.footer-right a:hover { color: var(--cyan); }
+
+[data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .6s var(--ease-out), transform .6s var(--ease-out); }.loaded [data-reveal] { opacity: 1; transform: translateY(0); }.loaded [data-reveal][data-delay="80"] { transition-delay: 80ms; }.loaded [data-reveal][data-delay="120"] { transition-delay: 120ms; }.loaded [data-reveal][data-delay="140"] { transition-delay: 140ms; }.loaded [data-reveal][data-delay="150"] { transition-delay: 150ms; }.loaded [data-reveal][data-delay="160"] { transition-delay: 160ms; }.loaded [data-reveal][data-delay="200"] { transition-delay: 200ms; }
+@media (max-width: 900px) { .hero { grid-template-columns: 1fr; gap: 48px; padding-top: 64px; }.hero-console { max-width: 620px; width: 100%; justify-self: center; }.metrics { grid-template-columns: repeat(2, 1fr); }.metric:nth-child(2) { border-right: 0; }.metric:nth-child(3), .metric:nth-child(4) { border-top: 1px solid var(--line); }.metric:nth-child(3) { padding-left: 0; }.metric:nth-child(4) { padding-left: 26px; border-right: 0; }.activity-layout { grid-template-columns: 1fr; } }
+@media (max-width: 700px) { .section-shell, .site-header { width: min(100% - 36px, 560px); }.site-header { height: 76px; }.main-nav { display: none; }.header-link { padding: 10px 12px; font-size: 9px; }.hero { min-height: auto; padding: 72px 0 68px; }.hero-lede { font-size: 14px; }.hero-meta { gap: 11px; line-height: 1.8; }.metrics { grid-template-columns: 1fr 1fr; }.metric { min-height: 112px; padding: 19px 12px 16px 0; }.metric + .metric { padding-left: 12px; }.metric strong { margin-top: 8px; font-size: 24px; }.metric-note { font-size: 10px; }.content-section { padding-top: 92px; }.section-heading { display: block; margin-bottom: 28px; }.section-intro { margin-top: 18px; }.project-grid, .archive-grid { grid-template-columns: 1fr; }.project-card { min-height: 405px; padding: 24px; }.card-bottom { right: 24px; bottom: 24px; left: 24px; }.activity-visual, .activity-notes { padding: 18px; }.chart-wrap { min-height: 190px; padding-left: 28px; }.activity-chart { height: 150px; }.chart-y-labels { top: 17px; bottom: 37px; }.visual-header { font-size: 9px; }.site-footer { display: block; margin-top: 100px; }.footer-right { justify-content: start; margin-top: 26px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
+/* Extension layer: live data, themes, releases, and project notes. */
+.header-tools { display: flex; align-items: center; gap: 7px; }
+.tool-button { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid var(--line-bright); border-radius: 6px; color: var(--muted); background: transparent; cursor: pointer; font: 11px 'DM Mono', monospace; transition: color .18s ease, border-color .18s ease, background .18s ease, transform .18s ease; }
+.tool-button:hover { color: var(--cyan); border-color: var(--cyan); background: rgba(34,211,238,.08); }.tool-button:active { transform: scale(.94); }
+
+.live-signal-section { padding-top: 90px; }.live-grid { display: grid; grid-template-columns: 1.35fr .8fr .8fr; gap: 13px; }.live-card { min-height: 166px; display: flex; flex-direction: column; justify-content: center; padding: 22px; border: 1px solid var(--line); border-radius: 9px; background: rgba(12, 28, 48, .58); }.live-card-wide { justify-content: space-between; background: linear-gradient(135deg, rgba(15, 53, 73, .72), rgba(10, 26, 46, .72)); }.live-card-head { display: flex; align-items: center; justify-content: space-between; }.live-kicker { color: var(--subtle); font: 10px 'DM Mono', monospace; letter-spacing: .1em; }.live-state { color: var(--green); font: 9px 'DM Mono', monospace; letter-spacing: .08em; }.live-state i { display: inline-block; width: 6px; height: 6px; margin-right: 5px; border-radius: 50%; background: var(--green); box-shadow: 0 0 9px var(--green); }.live-main { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px; }.live-main strong { color: var(--text); font-size: 36px; letter-spacing: -.07em; }.live-main span, .live-card > span:not(.live-kicker) { color: var(--muted); font: 11px 'DM Mono', monospace; }.live-main strong:nth-of-type(2) { margin-left: 15px; }.live-divider { flex: 1; min-width: 18px; }.live-main small { color: var(--subtle); font: 10px 'DM Mono', monospace; }.live-card > strong { margin: 15px 0 2px; color: var(--text); font-size: 31px; letter-spacing: -.06em; }.live-card > a { margin-top: auto; color: var(--cyan); font: 10px 'DM Mono', monospace; }.live-card > a:hover { text-decoration: underline; }
+.inline-button { padding: 0; border: 0; color: var(--cyan); background: transparent; cursor: pointer; font: 11px 'DM Mono', monospace; }.inline-button:hover { text-decoration: underline; }.card-bottom { align-items: center; flex-wrap: wrap; }
+
+.release-section { padding-top: 136px; }.release-timeline { position: relative; display: grid; gap: 10px; padding-left: 25px; }.release-timeline::before { position: absolute; top: 10px; bottom: 10px; left: 5px; width: 1px; content: ''; background: linear-gradient(var(--cyan), rgba(34,211,238,.08)); }.release-item { position: relative; display: grid; grid-template-columns: 112px 1fr auto; align-items: center; gap: 20px; min-height: 84px; padding: 17px 20px; border: 1px solid var(--line); border-radius: 8px; background: rgba(12, 28, 48, .54); transition: transform .2s ease, border-color .2s ease; }.release-item::before { position: absolute; left: -24px; width: 9px; height: 9px; content: ''; border: 2px solid var(--bg); border-radius: 50%; background: var(--cyan); box-shadow: 0 0 0 1px rgba(34,211,238,.5); }.release-item:hover { transform: translateX(4px); border-color: rgba(34,211,238,.4); }.release-date { color: var(--subtle); font: 10px 'DM Mono', monospace; }.release-repo { margin-bottom: 4px; color: var(--cyan); font: 10px 'DM Mono', monospace; letter-spacing: .08em; }.release-name { color: var(--text); font-size: 15px; }.release-tag { padding: 6px 9px; border: 1px solid rgba(34,211,238,.26); border-radius: 4px; color: var(--cyan); font: 10px 'DM Mono', monospace; }.timeline-loading { display: flex; align-items: center; gap: 8px; min-height: 84px; color: var(--subtle); font: 11px 'DM Mono', monospace; }.timeline-loading span { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); animation: timeline-pulse 1.1s infinite alternate; }.timeline-loading span:nth-child(2) { animation-delay: .18s; }.timeline-loading span:nth-child(3) { animation-delay: .36s; }@keyframes timeline-pulse { to { opacity: .2; transform: translateY(-3px); } }
+
+.project-dialog { width: min(560px, calc(100% - 36px)); padding: 0; overflow: hidden; border: 1px solid var(--line-bright); border-radius: 12px; color: var(--text); background: linear-gradient(145deg, #112b46, #081727); box-shadow: 0 30px 100px rgba(0,0,0,.5); }.project-dialog::backdrop { background: rgba(1, 7, 14, .76); backdrop-filter: blur(5px); }.dialog-top { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid var(--line); }.dialog-top .eyebrow { margin: 0; }.dialog-close { width: 29px; height: 29px; border: 1px solid var(--line-bright); border-radius: 50%; color: var(--muted); background: transparent; cursor: pointer; font-size: 20px; line-height: 1; }.dialog-close:hover { color: var(--cyan); border-color: var(--cyan); }.dialog-body { padding: 28px 24px 26px; }.dialog-body h2 { margin-bottom: 15px; font-size: 39px; letter-spacing: -.07em; }.dialog-description { color: var(--muted); font-family: 'Noto Sans SC', sans-serif; font-size: 14px; line-height: 1.9; }.dialog-features { display: grid; gap: 8px; margin: 22px 0; }.dialog-feature { display: flex; gap: 10px; align-items: start; color: var(--muted); font-size: 13px; }.dialog-feature::before { content: '✦'; color: var(--cyan); }.dialog-links { display: flex; flex-wrap: wrap; gap: 10px; padding-top: 19px; border-top: 1px solid var(--line); }.dialog-links a { padding: 10px 13px; border: 1px solid var(--line-bright); border-radius: 5px; color: var(--text); font: 10px 'DM Mono', monospace; }.dialog-links a:hover { color: var(--cyan); border-color: var(--cyan); }
+
+body.light { --bg: #f4f8fc; --bg-deep: #eaf1f8; --panel: rgba(255,255,255,.82); --panel-strong: #fff; --line: rgba(41, 71, 99, .16); --line-bright: rgba(41, 71, 99, .32); --text: #0b1d31; --muted: #557087; --subtle: #71869a; }.light .ambient-a { opacity: .28; }.light .ambient-b { opacity: .18; }.light .grid-overlay { opacity: .14; }.light .hero-console, .light .project-dialog { background: linear-gradient(140deg, #fff, #eaf3fb); }.light .project-card-secondary { background: linear-gradient(135deg, rgba(239,236,255,.9), rgba(255,255,255,.82)); }.light .chart-wrap { background: linear-gradient(180deg, #e9f4fb, #f7fbfe); }.light .console-body, .light .console-topbar, .light .console-footer { color: var(--text); }.light .key { color: #3a6a91; }.light .value { color: #236292; }.light .number { color: #ba6c32; }.light .muted { color: #7190aa; }.light .chart-points circle { fill: #f4f8fc; }.light .live-card, .light .release-item { background: rgba(255,255,255,.72); }.light .live-card-wide { background: linear-gradient(135deg, #e1f7fb, #f8fbff); }
+
+@media (max-width: 900px) { .live-grid { grid-template-columns: 1fr 1fr; }.live-card-wide { grid-column: 1 / -1; } }
+@media (max-width: 700px) { .header-tools { gap: 5px; }.tool-button { width: 30px; height: 30px; }.header-link span:first-child { display: none; }.live-grid { grid-template-columns: 1fr; }.live-card-wide { grid-column: auto; }.release-item { grid-template-columns: 1fr auto; gap: 5px 12px; }.release-date { grid-column: 1 / -1; }.release-tag { grid-column: 2; grid-row: 2 / span 2; }.release-name { font-size: 13px; }.dialog-body h2 { font-size: 32px; } }
+
+.project-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin: -8px 0 20px; }.search-box { display: flex; align-items: center; gap: 9px; width: min(290px, 100%); padding: 10px 12px; border: 1px solid var(--line); border-radius: 6px; background: rgba(12, 28, 48, .46); color: var(--cyan); }.search-box span { font-size: 18px; line-height: 1; }.search-box input { width: 100%; border: 0; outline: 0; color: var(--text); background: transparent; font: 11px 'DM Mono', monospace; }.search-box input::placeholder { color: var(--subtle); }.filter-chips { display: flex; flex-wrap: wrap; gap: 7px; }.filter-chip { padding: 8px 11px; border: 1px solid var(--line); border-radius: 5px; color: var(--muted); background: transparent; cursor: pointer; font: 10px 'DM Mono', monospace; transition: color .18s ease, background .18s ease, border-color .18s ease, transform .18s ease; }.filter-chip:hover, .filter-chip.is-active { border-color: var(--cyan); color: var(--cyan); background: rgba(34,211,238,.08); }.filter-chip:active { transform: scale(.96); }.project-card.is-hidden { display: none; }.project-empty { padding: 22px; border: 1px dashed var(--line-bright); border-radius: 8px; color: var(--muted); font: 11px 'DM Mono', monospace; text-align: center; }
+.light .search-box { background: rgba(255,255,255,.76); }
+@media (max-width: 700px) { .project-toolbar { align-items: stretch; flex-direction: column; margin-top: -4px; }.search-box { width: 100%; }.filter-chips { gap: 5px; }.filter-chip { flex: 1; } }
+
+</style>
+  </head>
+  <body>
+    <div class="ambient ambient-a"></div>
+    <div class="ambient ambient-b"></div>
+    <div class="grid-overlay"></div>
+
+    <header class="site-header" data-reveal>
+      <a class="brand" href="#top" aria-label="GitHub Level home">
+        <span class="brand-mark"><span></span><span></span><span></span></span>
+        <span class="brand-name">GitHub <em>Level</em></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#overview">Overview</a>
+        <a href="#projects">Projects</a>
+        <a href="#activity">Activity</a>
+        <a href="#archive">Archive</a>
+        <a href="#releases">Releases</a>
+      </nav>
+      <div class="header-tools" aria-label="Display controls">
+        <button class="tool-button" id="lang-toggle" type="button" aria-label="Switch language">中</button>
+        <button class="tool-button" id="theme-toggle" type="button" aria-label="Toggle light and dark theme"><span id="theme-icon">☼</span></button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero section-shell" id="overview">
+        <div class="hero-copy" data-reveal>
+          <p class="eyebrow"><span class="pulse-dot"></span> OPEN-SOURCE NOTEBOOK <span class="eyebrow-year">/ 2026</span></p>
+          <h1>A small dashboard<br />for a <span>growing</span><br />GitHub trail.</h1>
+          <p class="hero-lede">个人 GitHub 活跃记录、作品索引与实验笔记。这里收录正在维护的 Android 个性化项目，也记录每一次把想法做成可用工具的过程。</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">Explore projects <span>↘</span></a>
+            <a class="button button-ghost" href="https://github.com/CnGyZzh" target="_blank" rel="noreferrer">Visit profile <span>↗</span></a>
+          </div>
+          <div class="hero-meta">
+            <span><i></i> Android tinkering</span>
+            <span><i></i> Material You</span>
+            <span><i></i> Small, useful tools</span>
+          </div>
+        </div>
+
+        <div class="hero-console" data-reveal data-delay="120">
+          <div class="console-topbar"><span class="window-dot red"></span><span class="window-dot yellow"></span><span class="window-dot green"></span><span class="console-label">level_state.json</span><span class="console-status">LIVE</span></div>
+          <div class="console-body">
+            <div class="console-line"><span class="line-number">01</span><span><b class="cyan">{</b></span></div>
+            <div class="console-line"><span class="line-number">02</span><span><b class="key">"owner"</b><span class="muted">:</span> <b class="value">"CnGyZzh"</b><span class="muted">,</span></span></div>
+            <div class="console-line"><span class="line-number">03</span><span><b class="key">"focus"</b><span class="muted">:</span> <b class="value">"android / open source"</b><span class="muted">,</span></span></div>
+            <div class="console-line"><span class="line-number">04</span><span><b class="key">"active_projects"</b><span class="muted">:</span> <b class="number">02</b><span class="muted">,</span></span></div>
+            <div class="console-line"><span class="line-number">05</span><span><b class="key">"shipping"</b><span class="muted">:</span> <b class="value">true</b><span class="muted">,</span></span></div>
+            <div class="console-line"><span class="line-number">06</span><span><b class="key">"principle"</b><span class="muted">:</span> <b class="value">"make it useful"</b></span></div>
+            <div class="console-line"><span class="line-number">07</span><span><b class="cyan">}</b><span class="cursor"></span></span></div>
+          </div>
+          <div class="console-footer"><span>Last sync</span><strong>just now</strong><span class="footer-divider"></span><span>Branch</span><strong>main</strong></div>
+        </div>
+      </section>
+
+      <section class="metrics section-shell" aria-label="Dashboard metrics" data-reveal>
+        <div class="metric"><span class="metric-label">ACTIVE PROJECTS</span><strong data-count="2">02</strong><span class="metric-note">shipping now</span></div>
+        <div class="metric"><span class="metric-label">FOCUS AREAS</span><strong data-count="3">03</strong><span class="metric-note">android · tooling · docs</span></div>
+        <div class="metric"><span class="metric-label">PROFILE HUB</span><strong>01</strong><span class="metric-note">github level</span></div>
+        <div class="metric metric-accent"><span class="metric-label">CURRENT MOOD</span><strong>BUILD</strong><span class="metric-note">small, useful, clear</span></div>
+      </section>
+
+      <section class="content-section section-shell live-signal-section" id="live-signal">
+        <div class="section-heading" data-reveal>
+          <div><p class="eyebrow">01 / LIVE REPOSITORY SIGNAL</p><h2 data-zh="数据会自己更新。" data-en="The signal updates itself.">The signal updates itself.</h2></div>
+          <p class="section-intro" data-zh="直接读取公开 GitHub 数据，不需要密钥。" data-en="Public GitHub data, synced without a key.">直接读取公开 GitHub 数据，不需要密钥。</p>
+        </div>
+        <div class="live-grid" data-reveal data-delay="80">
+          <div class="live-card live-card-wide"><div class="live-card-head"><span class="live-kicker">WETYPE MONET</span><span class="live-state" id="sync-state"><i></i> SYNCING</span></div><div class="live-main"><strong id="wetype-stars">—</strong><span>stars</span><strong id="wetype-forks">—</strong><span>forks</span><span class="live-divider"></span><small id="wetype-updated">Waiting for GitHub…</small></div></div>
+          <div class="live-card"><span class="live-kicker">GITHUB LEVEL</span><strong id="level-stars">—</strong><span>stars / repo</span><a href="https://github.com/CnGyZzh/Level" target="_blank" rel="noreferrer">Open repository ↗</a></div>
+          <div class="live-card"><span class="live-kicker">LATEST RELEASE</span><strong id="latest-release">—</strong><span id="latest-release-name">Checking releases…</span><a href="#releases">View timeline ↓</a></div>
+        </div>
+      </section>
+
+      <section class="content-section section-shell" id="projects">
+        <div class="section-heading" data-reveal>
+          <div><p class="eyebrow">01 / SELECTED WORK</p><h2>Projects with a point of view.</h2></div>
+          <p class="section-intro">不追求堆叠功能，更关注安装、回滚、说明和真实可用性。</p>
+        </div>
+        <div class="project-toolbar" data-reveal data-delay="40">
+          <label class="search-box"><span>⌕</span><input id="project-search" type="search" placeholder="Search projects…" aria-label="Search projects" /></label>
+          <div class="filter-chips" role="group" aria-label="Filter projects">
+            <button class="filter-chip is-active" type="button" data-filter="all">All</button>
+            <button class="filter-chip" type="button" data-filter="android">Android</button>
+            <button class="filter-chip" type="button" data-filter="github">GitHub</button>
+            <button class="filter-chip" type="button" data-filter="tooling">Tooling</button>
+          </div>
+        </div>
+        <div class="project-grid">
+          <article class="project-card project-card-primary" data-tags="android personalization tooling monet" data-reveal data-delay="80">
+            <div class="project-card-top"><span class="project-number">01</span><span class="project-arrow">↗</span></div>
+            <div class="project-icon icon-monet"><span>✦</span></div>
+            <p class="project-type">ANDROID / PERSONALIZATION</p>
+            <h3>WeType Monet</h3>
+            <p>为安卓版微信输入法带来 Material You / Monet 动态配色的个人维护分支，让键盘跟随系统壁纸变得更自然。</p>
+            <div class="tag-row"><span>Android 14+</span><span>Material You</span><span>Magisk / KernelSU</span></div>
+            <div class="card-bottom"><button class="inline-button detail-trigger" type="button" data-project="wetype">Details <span>＋</span></button><a href="https://github.com/CnGyZzh/WeType_Monet-Gy" target="_blank" rel="noreferrer">Repository <span>↗</span></a><a href="https://github.com/CnGyZzh/WeType_Monet-Gy/releases" target="_blank" rel="noreferrer">Releases <span>↗</span></a></div>
+          </article>
+          <article class="project-card project-card-secondary" data-tags="github dashboard profile tooling" data-reveal data-delay="160">
+            <div class="project-card-top"><span class="project-number">02</span><span class="project-arrow">↗</span></div>
+            <div class="project-icon icon-level"><span>⌁</span></div>
+            <p class="project-type">DASHBOARD / PROFILE</p>
+            <h3>GitHub Level</h3>
+            <p>一个轻量的个人 GitHub 仪表板，集中保存活动记录、作品入口和持续更新的开源足迹。</p>
+            <div class="tag-row"><span>GitHub</span><span>Activity log</span><span>Open source</span></div>
+            <div class="card-bottom"><button class="inline-button detail-trigger" type="button" data-project="level">Details <span>＋</span></button><a href="https://github.com/CnGyZzh/Level" target="_blank" rel="noreferrer">Repository <span>↗</span></a><a href="https://github.com/CnGyZzh" target="_blank" rel="noreferrer">Profile <span>↗</span></a></div>
+          </article>
+        </div>
+        <p class="project-empty" id="project-empty" hidden>No projects match that search.</p>
+      </section>
+
+      <section class="content-section section-shell activity-section" id="activity">
+        <div class="section-heading" data-reveal>
+          <div><p class="eyebrow">02 / OPEN-SOURCE TRAIL</p><h2>Keep the signal, skip the noise.</h2></div>
+          <p class="section-intro">活动记录不是 KPI，它只是提醒自己：项目可以小，但应该持续变得更清楚。</p>
+        </div>
+        <div class="activity-layout">
+          <div class="activity-visual" data-reveal data-delay="80">
+            <div class="visual-header"><span>CONTRIBUTION SIGNAL</span><span class="visual-period">LAST 12 MONTHS</span></div>
+            <div class="chart-wrap" role="img" aria-label="Recent GitHub activity trend">
+              <div class="chart-y-labels"><span>high</span><span>mid</span><span>low</span></div>
+              <svg class="activity-chart" viewBox="0 0 800 235" preserveAspectRatio="none" aria-hidden="true">
+                <defs><linearGradient id="chart-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#22d3ee" stop-opacity=".28" /><stop offset="1" stop-color="#22d3ee" stop-opacity="0" /></linearGradient></defs>
+                <g class="chart-grid"><line x1="0" y1="24" x2="800" y2="24" /><line x1="0" y1="112" x2="800" y2="112" /><line x1="0" y1="200" x2="800" y2="200" /></g>
+                <path class="chart-area" d="M0 187 C28 181 38 151 63 160 S94 128 121 143 S149 183 176 159 S201 115 226 131 S256 139 283 100 S310 116 337 125 S363 170 390 147 S416 108 441 119 S468 151 495 120 S520 91 548 111 S576 146 604 95 S631 126 659 113 S688 71 716 88 S748 58 800 48 L800 235 L0 235 Z" />
+                <path class="chart-line" d="M0 187 C28 181 38 151 63 160 S94 128 121 143 S149 183 176 159 S201 115 226 131 S256 139 283 100 S310 116 337 125 S363 170 390 147 S416 108 441 119 S468 151 495 120 S520 91 548 111 S576 146 604 95 S631 126 659 113 S688 71 716 88 S748 58 800 48" />
+                <g class="chart-points"><circle cx="121" cy="143" r="4" /><circle cx="283" cy="100" r="4" /><circle cx="441" cy="119" r="4" /><circle cx="604" cy="95" r="4" /><circle cx="800" cy="48" r="4" /></g>
+              </svg>
+              <div class="chart-months"><span>APR</span><span>JUN</span><span>AUG</span><span>OCT</span><span>DEC</span><span>FEB</span></div>
+            </div>
+            <div class="visual-caption"><span class="caption-mark"></span><span>公开活动数据 · 持续记录中</span><a href="https://github.com/CnGyZzh" target="_blank" rel="noreferrer">View source ↗</a></div>
+          </div>
+          <div class="activity-notes" data-reveal data-delay="150">
+            <div class="note-block"><span class="note-index">A</span><div><h3>Build in public</h3><p>把过程留下来，别人才能看见一个小工具是怎样慢慢变得可用。</p></div></div>
+            <div class="note-block"><span class="note-index">B</span><div><h3>Document the edge cases</h3><p>安装限制、兼容范围和回滚路径，和功能本身一样重要。</p></div></div>
+            <div class="note-block"><span class="note-index">C</span><div><h3>Ship the useful version</h3><p>先交付能工作的版本，再根据真实反馈决定下一步。</p></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section section-shell release-section" id="releases">
+        <div class="section-heading" data-reveal>
+          <div><p class="eyebrow">03 / RELEASE TIMELINE</p><h2 data-zh="每一次发布，都是一个坐标。" data-en="Every release is a coordinate.">Every release is a coordinate.</h2></div>
+          <p class="section-intro" data-zh="自动聚合 WeType Monet 与 GitHub Level 的公开 Release。" data-en="Public releases from WeType Monet and GitHub Level, collected automatically.">自动聚合 WeType Monet 与 GitHub Level 的公开 Release。</p>
+        </div>
+        <div class="release-timeline" id="release-timeline" aria-live="polite"><div class="timeline-loading"><span></span><span></span><span></span> Loading release history…</div></div>
+      </section>
+
+      <section class="content-section section-shell archive-section" id="archive">
+        <div class="section-heading" data-reveal>
+          <div><p class="eyebrow">03 / ARCHIVE</p><h2>The work behind the work.</h2></div>
+        </div>
+        <div class="archive-grid">
+          <a class="archive-card" href="https://github.com/CnGyZzh/Level/blob/main/activity.txt" target="_blank" rel="noreferrer" data-reveal data-delay="80"><span class="archive-icon">↯</span><span><b>activity.txt</b><small>历史活动记录归档</small></span><span class="archive-arrow">↗</span></a>
+          <a class="archive-card" href="https://github.com/CnGyZzh/Level/blob/main/daily_log.txt" target="_blank" rel="noreferrer" data-reveal data-delay="140"><span class="archive-icon">◷</span><span><b>daily_log.txt</b><small>持续更新的日常记录</small></span><span class="archive-arrow">↗</span></a>
+          <a class="archive-card" href="https://github.com/CnGyZzh?tab=repositories" target="_blank" rel="noreferrer" data-reveal data-delay="200"><span class="archive-icon">⌘</span><span><b>all repositories</b><small>查看更多实验与项目</small></span><span class="archive-arrow">↗</span></a>
+        </div>
+      </section>
+    </main>
+
+    <dialog class="project-dialog" id="project-dialog" aria-labelledby="dialog-title">
+      <div class="dialog-top"><span class="eyebrow">PROJECT NOTE</span><button class="dialog-close" id="dialog-close" type="button" aria-label="Close">×</button></div>
+      <div class="dialog-body"><p class="project-type" id="dialog-type">ANDROID / PERSONALIZATION</p><h2 id="dialog-title">Project</h2><p class="dialog-description" id="dialog-description"></p><div class="dialog-features" id="dialog-features"></div><div class="dialog-links" id="dialog-links"></div></div>
+    </dialog>
+
+    <footer class="site-footer section-shell" data-reveal>
+      <div><span class="footer-kicker">GITHUB LEVEL / CN GY ZZH</span><p>把想法变成可用的东西。</p></div>
+      <div class="footer-right"><a href="https://github.com/CnGyZzh" target="_blank" rel="noreferrer">GitHub ↗</a><span>© <span id="year"></span></span></div>
+    </footer>
+
+    <script>
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = (selector, root = document) => root.querySelector(selector);
+const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+const langToggle = $('#lang-toggle');
+const themeToggle = $('#theme-toggle');
+
+// GitHub Level dashboard interactions: live public API data, themes, and accessible reveals.
+document.documentElement.classList.add('loaded');
+$('#year').textContent = new Date().getFullYear();
+
+const revealItems = $$('[data-reveal]');
+if (!reduceMotion && 'IntersectionObserver' in window) {
+  document.documentElement.classList.remove('loaded');
+  const observer = new IntersectionObserver((entries, instance) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        instance.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealItems.forEach((item) => observer.observe(item));
+  document.documentElement.classList.add('loaded');
+  requestAnimationFrame(() => revealItems.forEach((item) => {
+    if (item.getBoundingClientRect().top < window.innerHeight * .9) item.classList.add('is-visible');
+  }));
+} else revealItems.forEach((item) => item.classList.add('is-visible'));
+
+const counters = $$('[data-count]');
+if (!reduceMotion && 'IntersectionObserver' in window) {
+  const counterObserver = new IntersectionObserver((entries, instance) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const node = entry.target;
+      const target = Number(node.dataset.count);
+      const started = performance.now();
+      const step = (now) => {
+        const progress = Math.min((now - started) / 650, 1);
+        node.textContent = String(Math.round(target * (1 - Math.pow(1 - progress, 3)))).padStart(2, '0');
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+      instance.unobserve(node);
+    });
+  }, { threshold: .8 });
+  counters.forEach((counter) => counterObserver.observe(counter));
+}
+
+const navLinks = $$('.main-nav a');
+const sections = navLinks.map((link) => $(link.getAttribute('href'))).filter(Boolean);
+if ('IntersectionObserver' in window) {
+  const sectionObserver = new IntersectionObserver((entries) => entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+    navLinks.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`));
+  }), { rootMargin: '-35% 0px -55% 0px' });
+  sections.forEach((section) => sectionObserver.observe(section));
+}
+
+// Light/dark theme preference.
+const savedTheme = localStorage.getItem('github-level-theme');
+if (savedTheme === 'light') document.body.classList.add('light');
+function updateThemeButton() {
+  const light = document.body.classList.contains('light');
+  $('#theme-icon').textContent = light ? '☾' : '☼';
+  themeToggle.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
+}
+updateThemeButton();
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+  localStorage.setItem('github-level-theme', document.body.classList.contains('light') ? 'light' : 'dark');
+  updateThemeButton();
+});
+
+// Focused bilingual layer: the visual language remains English-led, while key reading points switch.
+const uiTranslations = {
+  zh: {
+    '[href="#overview"]': '概览', '[href="#projects"]': '项目', '[href="#activity"]': '动态', '[href="#archive"]': '归档', '[href="#releases"]': '发布',
+    '.hero-lede': '个人 GitHub 活跃记录、作品索引与实验笔记。这里收录正在维护的 Android 个性化项目，也记录每一次把想法做成可用工具的过程。',
+    '.hero-actions .button-primary': '探索项目 ↘', '.hero-actions .button-ghost': '查看主页 ↗',
+    '#live-signal .section-heading h2': '数据会自己更新。', '#projects .section-heading h2': '项目要有自己的观点。', '#activity .section-heading h2': '保持信号，跳过噪音。', '#releases .section-heading h2': '每一次发布，都是一个坐标。', '#archive .section-heading h2': '作品背后的工作。'
+  },
+  en: {
+    '[href="#overview"]': 'Overview', '[href="#projects"]': 'Projects', '[href="#activity"]': 'Activity', '[href="#archive"]': 'Archive', '[href="#releases"]': 'Releases',
+    '.hero-lede': 'A personal GitHub activity log, project index, and lab notebook for turning small Android ideas into useful tools.',
+    '.hero-actions .button-primary': 'Explore projects ↘', '.hero-actions .button-ghost': 'Visit profile ↗',
+    '#live-signal .section-heading h2': 'The signal updates itself.', '#projects .section-heading h2': 'Projects with a point of view.', '#activity .section-heading h2': 'Keep the signal, skip the noise.', '#releases .section-heading h2': 'Every release is a coordinate.', '#archive .section-heading h2': 'The work behind the work.'
+  }
+};
+let language = localStorage.getItem('github-level-language') || 'en';
+function applyLanguage(next) {
+  language = next;
+  document.documentElement.lang = next === 'zh' ? 'zh-CN' : 'en';
+  $$('[data-zh][data-en]').forEach((node) => { node.textContent = node.dataset[next]; });
+  const pack = uiTranslations[next];
+  Object.entries(pack).forEach(([selector, value]) => {
+    $$(selector).forEach((node) => {
+      if (node.matches('.button')) {
+        const arrow = value.includes('↘') ? '↘' : '↗';
+        node.innerHTML = `${value.replace(/ [↘↗]$/, '')} <span>${arrow}</span>`;
+      } else node.textContent = value;
+    });
+  });
+  langToggle.textContent = next === 'zh' ? 'EN' : '中';
+  langToggle.setAttribute('aria-label', next === 'zh' ? 'Switch to English' : '切换为中文');
+  localStorage.setItem('github-level-language', next);
+}
+applyLanguage(language);
+langToggle.addEventListener('click', () => applyLanguage(language === 'en' ? 'zh' : 'en'));
+
+const repoMap = { wetype: 'CnGyZzh/WeType_Monet-Gy', level: 'CnGyZzh/Level' };
+const githubHeaders = { Accept: 'application/vnd.github+json' };
+const escapeHTML = (value = '') => String(value).replace(/[&<>'"]/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char]));
+const formatDate = (date) => new Intl.DateTimeFormat(language === 'zh' ? 'zh-CN' : 'en-US', { month: 'short', day: 'numeric', year: 'numeric' }).format(new Date(date));
+
+async function fetchJSON(path) {
+  const response = await fetch(`https://api.github.com${path}`, { headers: githubHeaders });
+  if (!response.ok) throw new Error(`GitHub API ${response.status}`);
+  return response.json();
+}
+
+function setSyncState(label, success = true) {
+  const node = $('#sync-state');
+  node.innerHTML = `<i></i> ${label}`;
+  node.style.color = success ? 'var(--green)' : 'var(--orange)';
+}
+
+function renderReleases(releases) {
+  const timeline = $('#release-timeline');
+  if (!releases.length) {
+    timeline.innerHTML = `<div class="release-item"><span class="release-date">—</span><div><div class="release-repo">GITHUB LEVEL</div><div class="release-name">${language === 'zh' ? '暂无公开 Release' : 'No public releases yet'}</div></div></div>`;
+    return;
+  }
+  timeline.innerHTML = releases.slice(0, 8).map((release) => `<a class="release-item" href="${release.html_url}" target="_blank" rel="noreferrer"><span class="release-date">${formatDate(release.published_at || release.created_at)}</span><div><div class="release-repo">${escapeHTML(release.repo)}</div><div class="release-name">${escapeHTML(release.name || release.tag_name)}</div></div><span class="release-tag">${escapeHTML(release.tag_name)}</span></a>`).join('');
+}
+
+async function syncGitHub() {
+  try {
+    const [wetype, level, wetypeReleases, levelReleases] = await Promise.all([
+      fetchJSON(`/repos/${repoMap.wetype}`), fetchJSON(`/repos/${repoMap.level}`),
+      fetchJSON(`/repos/${repoMap.wetype}/releases?per_page=5`), fetchJSON(`/repos/${repoMap.level}/releases?per_page=5`)
+    ]);
+    $('#wetype-stars').textContent = wetype.stargazers_count.toLocaleString();
+    $('#wetype-forks').textContent = wetype.forks_count.toLocaleString();
+    $('#level-stars').textContent = level.stargazers_count.toLocaleString();
+    $('#wetype-updated').textContent = `${language === 'zh' ? '同步于' : 'Synced'} ${formatDate(new Date())}`;
+    const releases = [...wetypeReleases.map((item) => ({ ...item, repo: 'WETYPE MONET' })), ...levelReleases.map((item) => ({ ...item, repo: 'GITHUB LEVEL' }))].sort((a, b) => new Date(b.published_at || b.created_at) - new Date(a.published_at || a.created_at));
+    const latest = releases[0];
+    if (latest) { $('#latest-release').textContent = latest.tag_name; $('#latest-release-name').textContent = latest.name || 'Published release'; }
+    renderReleases(releases);
+    setSyncState('SYNCED');
+  } catch (error) {
+    setSyncState('OFFLINE', false);
+    $('#wetype-updated').textContent = language === 'zh' ? 'GitHub 暂时不可用' : 'GitHub is temporarily unavailable';
+    renderReleases([]);
+  }
+}
+syncGitHub();
+
+const projectDetails = {
+  wetype: { type: 'ANDROID / PERSONALIZATION', title: 'WeType Monet', zh: '为安卓版微信输入法带来 Material You / Monet 动态配色的个人维护分支，让键盘跟随系统壁纸变得更自然。', en: 'A personal Android fork that brings Material You / Monet dynamic color to WeChat Input, so the keyboard follows the system palette.', features: ['Android 14+ compatibility', 'Material You / Monet color pipeline', 'Magisk and KernelSU installation paths'], links: [['Repository', 'https://github.com/CnGyZzh/WeType_Monet-Gy'], ['Releases', 'https://github.com/CnGyZzh/WeType_Monet-Gy/releases']] },
+  level: { type: 'DASHBOARD / PROFILE', title: 'GitHub Level', zh: '一个轻量的个人 GitHub 仪表板，集中保存活动记录、作品入口和持续更新的开源足迹。', en: 'A lightweight personal GitHub dashboard for activity records, project discovery, and an open-source trail that keeps moving.', features: ['Public activity and project index', 'Automatic release timeline', 'Bilingual, themeable presentation layer'], links: [['Repository', 'https://github.com/CnGyZzh/Level'], ['Profile', 'https://github.com/CnGyZzh']] }
+};
+const dialog = $('#project-dialog');
+$$('.detail-trigger').forEach((button) => button.addEventListener('click', () => {
+  const detail = projectDetails[button.dataset.project];
+  $('#dialog-type').textContent = detail.type;
+  $('#dialog-title').textContent = detail.title;
+  $('#dialog-description').textContent = language === 'zh' ? detail.zh : detail.en;
+  $('#dialog-features').innerHTML = detail.features.map((feature) => `<div class="dialog-feature">${escapeHTML(feature)}</div>`).join('');
+  $('#dialog-links').innerHTML = detail.links.map(([label, url]) => `<a href="${url}" target="_blank" rel="noreferrer">${label} ↗</a>`).join('');
+  if (typeof dialog.showModal === 'function') dialog.showModal(); else dialog.setAttribute('open', '');
+}));
+$('#dialog-close').addEventListener('click', () => dialog.close());
+dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+
+// Project discovery: search by title, description, or tag and filter by a focused label.
+const projectCards = $$('.project-card[data-tags]');
+const projectSearch = $('#project-search');
+const projectEmpty = $('#project-empty');
+let activeFilter = 'all';
+function applyProjectFilter() {
+  const query = (projectSearch?.value || '').trim().toLowerCase();
+  let visible = 0;
+  projectCards.forEach((card) => {
+    const matchesFilter = activeFilter === 'all' || card.dataset.tags.split(' ').includes(activeFilter);
+    const matchesQuery = !query || card.textContent.toLowerCase().includes(query) || card.dataset.tags.includes(query);
+    const show = matchesFilter && matchesQuery;
+    card.classList.toggle('is-hidden', !show);
+    if (show) visible += 1;
+  });
+  if (projectEmpty) projectEmpty.hidden = visible !== 0;
+}
+projectSearch?.addEventListener('input', applyProjectFilter);
+$$('.filter-chip').forEach((chip) => chip.addEventListener('click', () => {
+  activeFilter = chip.dataset.filter;
+  $$('.filter-chip').forEach((item) => item.classList.toggle('is-active', item === chip));
+  applyProjectFilter();
+}));
+
+</script>
+  </body>
+</html>
