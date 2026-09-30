@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#07111f" />
+    <meta name="theme-color" content="#faf7ff" />
     <meta name="description" content="GitHub Level — CnGyZzh 的个人主页、项目索引与开源记录。" />
-    <title>GitHub Level · CnGyZzh</title>
+    <title>CnGyZzh · Android &amp; Material You</title>
     <link rel="canonical" href="https://cngyzzh.github.io/" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://cngyzzh.github.io/" />
@@ -17,7 +17,7 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"CnGyZzh","url":"https://github.com/CnGyZzh","sameAs":["https://github.com/CnGyZzh"],"knowsAbout":["Android","Open Source","Material You"]}</script>
     <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjEyMCIgZmlsbD0iIzA3MTExZiIvPjxwYXRoIGQ9Ik0xMTIgMzUyVjE2MGg2MHYxMjhoNjB2LTk2aDYwdjk2aDYwVjE2MGg2MHYxOTJIMTEyWiIgZmlsbD0iIzIyZDNlZSIvPjwvc3ZnPgo=" type="image/svg+xml" />
     <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
+500&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap');
 
 :root {
   --bg: #07111f;
@@ -120,16 +120,18 @@ body.light { --bg: #f4f8fc; --bg-deep: #eaf1f8; --panel: rgba(255,255,255,.82); 
 @media (max-width: 700px) { .project-toolbar { align-items: stretch; flex-direction: column; margin-top: -4px; }.search-box { width: 100%; }.filter-chips { gap: 5px; }.filter-chip { flex: 1; } }
 
 </style>
+    <link rel="stylesheet" href="material.css" />
   </head>
-  <body>
+  <body class="light">
+    <a class="skip-link" href="#projects">跳转到项目</a>
     <div class="ambient ambient-a"></div>
     <div class="ambient ambient-b"></div>
     <div class="grid-overlay"></div>
 
     <header class="site-header" data-reveal>
-      <a class="brand" href="#top" aria-label="GitHub Level home">
+      <a class="brand" href="#top" aria-label="CnGyZzh home">
         <span class="brand-mark"><span></span><span></span><span></span></span>
-        <span class="brand-name">GitHub <em>Level</em></span>
+        <span class="brand-name">CnGyZzh<em>.</em></span>
       </a>
       <nav class="main-nav" aria-label="Main navigation">
         <a href="#overview">Overview</a>
@@ -147,8 +149,8 @@ body.light { --bg: #f4f8fc; --bg-deep: #eaf1f8; --panel: rgba(255,255,255,.82); 
     <main id="top">
       <section class="hero section-shell" id="overview">
         <div class="hero-copy" data-reveal>
-          <p class="eyebrow"><span class="pulse-dot"></span> OPEN-SOURCE NOTEBOOK <span class="eyebrow-year">/ 2026</span></p>
-          <h1>A small dashboard<br />for a <span>growing</span><br />GitHub trail.</h1>
+          <p class="eyebrow"><span class="pulse-dot"></span> ANDROID · MATERIAL YOU <span class="eyebrow-year">/ 2026</span></p>
+          <h1>Hi, I’m Gy.<br /><span>Make it yours.</span></h1>
           <p class="hero-lede">个人 GitHub 活跃记录、作品索引与实验笔记。这里收录正在维护的 Android 个性化项目，也记录每一次把想法做成可用工具的过程。</p>
           <div class="hero-actions">
             <a class="button button-primary" href="#projects">Explore projects <span>↘</span></a>
@@ -161,39 +163,21 @@ body.light { --bg: #f4f8fc; --bg-deep: #eaf1f8; --panel: rgba(255,255,255,.82); 
           </div>
         </div>
 
-        <div class="hero-console" data-reveal data-delay="120">
-          <div class="console-topbar"><span class="window-dot red"></span><span class="window-dot yellow"></span><span class="window-dot green"></span><span class="console-label">level_state.json</span><span class="console-status">LIVE</span></div>
-          <div class="console-body">
-            <div class="console-line"><span class="line-number">01</span><span><b class="cyan">{</b></span></div>
-            <div class="console-line"><span class="line-number">02</span><span><b class="key">"owner"</b><span class="muted">:</span> <b class="value">"CnGyZzh"</b><span class="muted">,</span></span></div>
-            <div class="console-line"><span class="line-number">03</span><span><b class="key">"focus"</b><span class="muted">:</span> <b class="value">"android / open source"</b><span class="muted">,</span></span></div>
-            <div class="console-line"><span class="line-number">04</span><span><b class="key">"active_projects"</b><span class="muted">:</span> <b class="number">02</b><span class="muted">,</span></span></div>
-            <div class="console-line"><span class="line-number">05</span><span><b class="key">"shipping"</b><span class="muted">:</span> <b class="value">true</b><span class="muted">,</span></span></div>
-            <div class="console-line"><span class="line-number">06</span><span><b class="key">"principle"</b><span class="muted">:</span> <b class="value">"make it useful"</b></span></div>
-            <div class="console-line"><span class="line-number">07</span><span><b class="cyan">}</b><span class="cursor"></span></span></div>
-          </div>
-          <div class="console-footer"><span>Last sync</span><strong>just now</strong><span class="footer-divider"></span><span>Branch</span><strong>main</strong></div>
+        <div class="hero-console identity-card" data-reveal>
+          <div class="identity-top"><span>MY LITTLE OPEN-SOURCE CORNER</span><span aria-hidden="true">↗</span></div>
+          <div class="monet-art" aria-hidden="true"><div class="petal p1"></div><div class="petal p2"></div><div class="petal p3"></div><div class="petal p4"></div><span>g.</span></div>
+          <div class="identity-bottom"><div><strong>CnGyZzh</strong><p>Android tinkerer &amp; open-source maker</p></div><span class="identity-badge">✦</span></div>
         </div>
       </section>
 
       <section class="metrics section-shell" aria-label="Dashboard metrics" data-reveal>
-        <div class="metric"><span class="metric-label">ACTIVE PROJECTS</span><strong data-count="2">02</strong><span class="metric-note">shipping now</span></div>
+        <div class="metric"><span class="metric-label">SELECTED PROJECTS</span><strong data-count="2">02</strong><span class="metric-note">精选项目</span></div>
         <div class="metric"><span class="metric-label">FOCUS AREAS</span><strong data-count="3">03</strong><span class="metric-note">android · tooling · docs</span></div>
         <div class="metric"><span class="metric-label">PROFILE HUB</span><strong>01</strong><span class="metric-note">github level</span></div>
-        <div class="metric metric-accent"><span class="metric-label">CURRENT MOOD</span><strong>BUILD</strong><span class="metric-note">small, useful, clear</span></div>
+        <div class="metric metric-accent"><span class="metric-label">APPROACH</span><strong>BUILD</strong><span class="metric-note">small, useful, clear</span></div>
       </section>
 
-      <section class="content-section section-shell live-signal-section" id="live-signal">
-        <div class="section-heading" data-reveal>
-          <div><p class="eyebrow">01 / LIVE REPOSITORY SIGNAL</p><h2 data-zh="数据会自己更新。" data-en="The signal updates itself.">The signal updates itself.</h2></div>
-          <p class="section-intro" data-zh="直接读取公开 GitHub 数据，不需要密钥。" data-en="Public GitHub data, synced without a key.">直接读取公开 GitHub 数据，不需要密钥。</p>
-        </div>
-        <div class="live-grid" data-reveal data-delay="80">
-          <div class="live-card live-card-wide"><div class="live-card-head"><span class="live-kicker">WETYPE MONET</span><span class="live-state" id="sync-state"><i></i> SYNCING</span></div><div class="live-main"><strong id="wetype-stars">—</strong><span>stars</span><strong id="wetype-forks">—</strong><span>forks</span><span class="live-divider"></span><small id="wetype-updated">Waiting for GitHub…</small></div></div>
-          <div class="live-card"><span class="live-kicker">GITHUB LEVEL</span><strong id="level-stars">—</strong><span>stars / repo</span><a href="https://github.com/CnGyZzh/Level" target="_blank" rel="noreferrer">Open repository ↗</a></div>
-          <div class="live-card"><span class="live-kicker">LATEST RELEASE</span><strong id="latest-release">—</strong><span id="latest-release-name">Checking releases…</span><a href="#releases">View timeline ↓</a></div>
-        </div>
-      </section>
+
 
       <section class="content-section section-shell" id="projects">
         <div class="section-heading" data-reveal>
@@ -203,10 +187,10 @@ body.light { --bg: #f4f8fc; --bg-deep: #eaf1f8; --panel: rgba(255,255,255,.82); 
         <div class="project-toolbar" data-reveal data-delay="40">
           <label class="search-box"><span>⌕</span><input id="project-search" type="search" placeholder="Search projects…" aria-label="Search projects" /></label>
           <div class="filter-chips" role="group" aria-label="Filter projects">
-            <button class="filter-chip is-active" type="button" data-filter="all">All</button>
-            <button class="filter-chip" type="button" data-filter="android">Android</button>
-            <button class="filter-chip" type="button" data-filter="github">GitHub</button>
-            <button class="filter-chip" type="button" data-filter="tooling">Tooling</button>
+            <button class="filter-chip is-active" type="button" aria-pressed="true" data-filter="all">All</button>
+            <button class="filter-chip" type="button" aria-pressed="false" data-filter="android">Android</button>
+            <button class="filter-chip" type="button" aria-pressed="false" data-filter="github">GitHub</button>
+            <button class="filter-chip" type="button" aria-pressed="false" data-filter="tooling">Tooling</button>
           </div>
         </div>
         <div class="project-grid">
@@ -232,6 +216,18 @@ body.light { --bg: #f4f8fc; --bg-deep: #eaf1f8; --panel: rgba(255,255,255,.82); 
         <p class="project-empty" id="project-empty" hidden>No projects match that search.</p>
       </section>
 
+      <section class="content-section section-shell live-signal-section" id="live-signal">
+        <div class="section-heading" data-reveal>
+          <div><p class="eyebrow">01 / LIVE REPOSITORY SIGNAL</p><h2 data-zh="项目近况。" data-en="The signal updates itself.">The signal updates itself.</h2></div>
+          <p class="section-intro" data-zh="直接读取公开 GitHub 数据，不需要密钥。" data-en="Public GitHub data, synced without a key.">直接读取公开 GitHub 数据，不需要密钥。</p>
+        </div>
+        <div class="live-grid" data-reveal data-delay="80">
+          <div class="live-card live-card-wide"><div class="live-card-head"><span class="live-kicker">WETYPE MONET</span><span class="live-state" id="sync-state"><i></i> SYNCING</span></div><div class="live-main"><strong id="wetype-stars">—</strong><span>stars</span><strong id="wetype-forks">—</strong><span>forks</span><span class="live-divider"></span><small id="wetype-updated">Waiting for GitHub…</small></div></div>
+          <div class="live-card"><span class="live-kicker">GITHUB LEVEL</span><strong id="level-stars">—</strong><span>stars / repo</span><a href="https://github.com/CnGyZzh/Level" target="_blank" rel="noreferrer">Open repository ↗</a></div>
+          <div class="live-card"><span class="live-kicker">LATEST RELEASE</span><strong id="latest-release">—</strong><span id="latest-release-name">Checking releases…</span><a href="#releases">View timeline ↓</a></div>
+        </div>
+      </section>
+
       <section class="content-section section-shell activity-section" id="activity">
         <div class="section-heading" data-reveal>
           <div><p class="eyebrow">02 / OPEN-SOURCE TRAIL</p><h2>Keep the signal, skip the noise.</h2></div>
@@ -239,19 +235,8 @@ body.light { --bg: #f4f8fc; --bg-deep: #eaf1f8; --panel: rgba(255,255,255,.82); 
         </div>
         <div class="activity-layout">
           <div class="activity-visual" data-reveal data-delay="80">
-            <div class="visual-header"><span>CONTRIBUTION SIGNAL</span><span class="visual-period">LAST 12 MONTHS</span></div>
-            <div class="chart-wrap" role="img" aria-label="Recent GitHub activity trend">
-              <div class="chart-y-labels"><span>high</span><span>mid</span><span>low</span></div>
-              <svg class="activity-chart" viewBox="0 0 800 235" preserveAspectRatio="none" aria-hidden="true">
-                <defs><linearGradient id="chart-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#22d3ee" stop-opacity=".28" /><stop offset="1" stop-color="#22d3ee" stop-opacity="0" /></linearGradient></defs>
-                <g class="chart-grid"><line x1="0" y1="24" x2="800" y2="24" /><line x1="0" y1="112" x2="800" y2="112" /><line x1="0" y1="200" x2="800" y2="200" /></g>
-                <path class="chart-area" d="M0 187 C28 181 38 151 63 160 S94 128 121 143 S149 183 176 159 S201 115 226 131 S256 139 283 100 S310 116 337 125 S363 170 390 147 S416 108 441 119 S468 151 495 120 S520 91 548 111 S576 146 604 95 S631 126 659 113 S688 71 716 88 S748 58 800 48 L800 235 L0 235 Z" />
-                <path class="chart-line" d="M0 187 C28 181 38 151 63 160 S94 128 121 143 S149 183 176 159 S201 115 226 131 S256 139 283 100 S310 116 337 125 S363 170 390 147 S416 108 441 119 S468 151 495 120 S520 91 548 111 S576 146 604 95 S631 126 659 113 S688 71 716 88 S748 58 800 48" />
-                <g class="chart-points"><circle cx="121" cy="143" r="4" /><circle cx="283" cy="100" r="4" /><circle cx="441" cy="119" r="4" /><circle cx="604" cy="95" r="4" /><circle cx="800" cy="48" r="4" /></g>
-              </svg>
-              <div class="chart-months"><span>APR</span><span>JUN</span><span>AUG</span><span>OCT</span><span>DEC</span><span>FEB</span></div>
-            </div>
-            <div class="visual-caption"><span class="caption-mark"></span><span>公开活动数据 · 持续记录中</span><a href="https://github.com/CnGyZzh" target="_blank" rel="noreferrer">View source ↗</a></div>
+            <div class="visual-header"><span>OPEN-SOURCE ACTIVITY</span><span class="visual-period">GITHUB</span></div>
+            <div class="activity-message"><span aria-hidden="true">↗</span><h3 data-zh="每一步，都留在开源里。" data-en="Small steps, shared openly.">每一步，都留在开源里。</h3><p data-zh="提交、讨论与贡献记录，可以在 GitHub 主页查看。" data-en="Explore commits, discussions, and contributions on GitHub.">提交、讨论与贡献记录，可以在 GitHub 主页查看。</p><a class="button button-primary" href="https://github.com/CnGyZzh?tab=overview">GitHub ↗</a></div>
           </div>
           <div class="activity-notes" data-reveal data-delay="150">
             <div class="note-block"><span class="note-index">A</span><div><h3>Build in public</h3><p>把过程留下来，别人才能看见一个小工具是怎样慢慢变得可用。</p></div></div>
@@ -302,23 +287,46 @@ const themeToggle = $('#theme-toggle');
 document.documentElement.classList.add('loaded');
 $('#year').textContent = new Date().getFullYear();
 
-const revealItems = $$('[data-reveal]');
-if (!reduceMotion && 'IntersectionObserver' in window) {
-  document.documentElement.classList.remove('loaded');
+// Animate on entry without hiding content or delaying pointer feedback.
+const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+if (!motionPreference.matches && 'IntersectionObserver' in window) {
   const observer = new IntersectionObserver((entries, instance) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        instance.unobserve(entry.target);
-      }
+    entries.forEach(({ target, isIntersecting }) => {
+      if (!isIntersecting) return;
+      instance.unobserve(target);
+      if (!motionPreference.matches) target.animate([
+        { opacity: .3, translate: '0 12px' },
+        { opacity: 1, translate: '0 0' }
+      ], { duration: 280, easing: 'cubic-bezier(.2,.8,.2,1)' });
     });
-  }, { threshold: 0.12 });
-  revealItems.forEach((item) => observer.observe(item));
-  document.documentElement.classList.add('loaded');
-  requestAnimationFrame(() => revealItems.forEach((item) => {
-    if (item.getBoundingClientRect().top < window.innerHeight * .9) item.classList.add('is-visible');
-  }));
-} else revealItems.forEach((item) => item.classList.add('is-visible'));
+  }, { threshold: 0, rootMargin: '0px 0px 24px 0px' });
+  $$('[data-reveal]').forEach((item) => {
+    if (item.getBoundingClientRect().top >= window.innerHeight) observer.observe(item);
+  });
+  motionPreference.addEventListener('change', () => {
+    if (motionPreference.matches) {
+      observer.disconnect();
+      document.getAnimations().forEach((animation) => animation.cancel());
+    }
+  });
+}
+
+// Immediate pointer feedback; one short, compositor-driven ripple per control.
+document.addEventListener('pointerdown', (event) => {
+  if (motionPreference.matches || event.button !== 0) return;
+  const control = event.target.closest('.button, .tool-button, .filter-chip');
+  if (!control) return;
+  control.querySelector('.touch-ripple')?.remove();
+  const bounds = control.getBoundingClientRect();
+  const ripple = document.createElement('span');
+  ripple.className = 'touch-ripple';
+  ripple.setAttribute('aria-hidden', 'true');
+  const size = Math.max(bounds.width, bounds.height) * 2;
+  Object.assign(ripple.style, { width: size + 'px', height: size + 'px', left: (event.clientX - bounds.left - size / 2) + 'px', top: (event.clientY - bounds.top - size / 2) + 'px' });
+  control.append(ripple);
+  const animation = ripple.animate([{ transform: 'scale(0)', opacity: .18 }, { transform: 'scale(1)', opacity: 0 }], { duration: 340, easing: 'cubic-bezier(.2,.8,.2,1)' });
+  animation.finished.then(() => ripple.remove(), () => ripple.remove());
+}, { passive: true });
 
 const counters = $$('[data-count]');
 if (!reduceMotion && 'IntersectionObserver' in window) {
@@ -351,8 +359,9 @@ if ('IntersectionObserver' in window) {
 }
 
 // Light/dark theme preference.
-const savedTheme = localStorage.getItem('github-level-theme');
-if (savedTheme === 'light') document.body.classList.add('light');
+const storage = { get(key) { try { return localStorage.getItem(key); } catch { return null; } }, set(key, value) { try { localStorage.setItem(key, value); } catch {} } };
+const savedTheme = storage.get('github-level-theme');
+document.body.classList.toggle('light', savedTheme !== 'dark');
 function updateThemeButton() {
   const light = document.body.classList.contains('light');
   $('#theme-icon').textContent = light ? '☾' : '☼';
@@ -361,7 +370,7 @@ function updateThemeButton() {
 updateThemeButton();
 themeToggle.addEventListener('click', () => {
   document.body.classList.toggle('light');
-  localStorage.setItem('github-level-theme', document.body.classList.contains('light') ? 'light' : 'dark');
+  storage.set('github-level-theme', document.body.classList.contains('light') ? 'light' : 'dark');
   updateThemeButton();
 });
 
@@ -371,7 +380,7 @@ const uiTranslations = {
     '[href="#overview"]': '概览', '[href="#projects"]': '项目', '[href="#activity"]': '动态', '[href="#archive"]': '归档', '[href="#releases"]': '发布',
     '.hero-lede': '个人 GitHub 活跃记录、作品索引与实验笔记。这里收录正在维护的 Android 个性化项目，也记录每一次把想法做成可用工具的过程。',
     '.hero-actions .button-primary': '探索项目 ↘', '.hero-actions .button-ghost': '查看主页 ↗',
-    '#live-signal .section-heading h2': '数据会自己更新。', '#projects .section-heading h2': '项目要有自己的观点。', '#activity .section-heading h2': '保持信号，跳过噪音。', '#releases .section-heading h2': '每一次发布，都是一个坐标。', '#archive .section-heading h2': '作品背后的工作。'
+    '#live-signal .section-heading h2': '数据会自己更新。', '#projects .section-heading h2': '把想法，做成日常。', '#activity .section-heading h2': '在开源里，慢慢积累。', '#releases .section-heading h2': '每一次发布，都是一个坐标。', '#archive .section-heading h2': '作品背后的工作。'
   },
   en: {
     '[href="#overview"]': 'Overview', '[href="#projects"]': 'Projects', '[href="#activity"]': 'Activity', '[href="#archive"]': 'Archive', '[href="#releases"]': 'Releases',
@@ -380,7 +389,7 @@ const uiTranslations = {
     '#live-signal .section-heading h2': 'The signal updates itself.', '#projects .section-heading h2': 'Projects with a point of view.', '#activity .section-heading h2': 'Keep the signal, skip the noise.', '#releases .section-heading h2': 'Every release is a coordinate.', '#archive .section-heading h2': 'The work behind the work.'
   }
 };
-let language = localStorage.getItem('github-level-language') || 'en';
+let language = (storage.get('github-level-language') === 'en' ? 'en' : 'zh');
 function applyLanguage(next) {
   language = next;
   document.documentElement.lang = next === 'zh' ? 'zh-CN' : 'en';
@@ -396,7 +405,7 @@ function applyLanguage(next) {
   });
   langToggle.textContent = next === 'zh' ? 'EN' : '中';
   langToggle.setAttribute('aria-label', next === 'zh' ? 'Switch to English' : '切换为中文');
-  localStorage.setItem('github-level-language', next);
+  storage.set('github-level-language', next);
 }
 applyLanguage(language);
 langToggle.addEventListener('click', () => applyLanguage(language === 'en' ? 'zh' : 'en'));
@@ -407,7 +416,10 @@ const escapeHTML = (value = '') => String(value).replace(/[&<>'"]/g, (char) => (
 const formatDate = (date) => new Intl.DateTimeFormat(language === 'zh' ? 'zh-CN' : 'en-US', { month: 'short', day: 'numeric', year: 'numeric' }).format(new Date(date));
 
 async function fetchJSON(path) {
-  const response = await fetch(`https://api.github.com${path}`, { headers: githubHeaders });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10000);
+  let response;
+  try { response = await fetch(`https://api.github.com${path}`, { headers: githubHeaders, signal: controller.signal }); } finally { clearTimeout(timeout); }
   if (!response.ok) throw new Error(`GitHub API ${response.status}`);
   return response.json();
 }
@@ -424,7 +436,7 @@ function renderReleases(releases) {
     timeline.innerHTML = `<div class="release-item"><span class="release-date">—</span><div><div class="release-repo">GITHUB LEVEL</div><div class="release-name">${language === 'zh' ? '暂无公开 Release' : 'No public releases yet'}</div></div></div>`;
     return;
   }
-  timeline.innerHTML = releases.slice(0, 8).map((release) => `<a class="release-item" href="${release.html_url}" target="_blank" rel="noreferrer"><span class="release-date">${formatDate(release.published_at || release.created_at)}</span><div><div class="release-repo">${escapeHTML(release.repo)}</div><div class="release-name">${escapeHTML(release.name || release.tag_name)}</div></div><span class="release-tag">${escapeHTML(release.tag_name)}</span></a>`).join('');
+  timeline.innerHTML = releases.slice(0, 8).map((release) => `<a class="release-item" href="${escapeHTML(release.html_url)}" target="_blank" rel="noreferrer"><span class="release-date">${formatDate(release.published_at || release.created_at)}</span><div><div class="release-repo">${escapeHTML(release.repo)}</div><div class="release-name">${escapeHTML(release.name || release.tag_name)}</div></div><span class="release-tag">${escapeHTML(release.tag_name)}</span></a>`).join('');
 }
 
 async function syncGitHub() {
@@ -440,12 +452,14 @@ async function syncGitHub() {
     const releases = [...wetypeReleases.map((item) => ({ ...item, repo: 'WETYPE MONET' })), ...levelReleases.map((item) => ({ ...item, repo: 'GITHUB LEVEL' }))].sort((a, b) => new Date(b.published_at || b.created_at) - new Date(a.published_at || a.created_at));
     const latest = releases[0];
     if (latest) { $('#latest-release').textContent = latest.tag_name; $('#latest-release-name').textContent = latest.name || 'Published release'; }
+    if (!latest) $('#latest-release-name').textContent = language === 'zh' ? '暂无公开发布' : 'No public releases';
     renderReleases(releases);
     setSyncState('SYNCED');
   } catch (error) {
     setSyncState('OFFLINE', false);
     $('#wetype-updated').textContent = language === 'zh' ? 'GitHub 暂时不可用' : 'GitHub is temporarily unavailable';
-    renderReleases([]);
+    $('#latest-release-name').textContent = '暂时无法获取 / Unavailable';
+    $('#release-timeline').innerHTML = '<p class="release-item">暂时无法获取发布记录，请稍后刷新，或访问项目的 Releases 页面。</p>';
   }
 }
 syncGitHub();
@@ -463,6 +477,7 @@ $$('.detail-trigger').forEach((button) => button.addEventListener('click', () =>
   $('#dialog-features').innerHTML = detail.features.map((feature) => `<div class="dialog-feature">${escapeHTML(feature)}</div>`).join('');
   $('#dialog-links').innerHTML = detail.links.map(([label, url]) => `<a href="${url}" target="_blank" rel="noreferrer">${label} ↗</a>`).join('');
   if (typeof dialog.showModal === 'function') dialog.showModal(); else dialog.setAttribute('open', '');
+  if (!motionPreference.matches) dialog.animate([{ opacity: 0, transform: 'translateY(10px) scale(.98)' }, { opacity: 1, transform: 'translateY(0) scale(1)' }], { duration: 180, easing: 'cubic-bezier(.2,.8,.2,1)' });
 }));
 $('#dialog-close').addEventListener('click', () => dialog.close());
 dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
@@ -487,7 +502,7 @@ function applyProjectFilter() {
 projectSearch?.addEventListener('input', applyProjectFilter);
 $$('.filter-chip').forEach((chip) => chip.addEventListener('click', () => {
   activeFilter = chip.dataset.filter;
-  $$('.filter-chip').forEach((item) => item.classList.toggle('is-active', item === chip));
+  $$('.filter-chip').forEach((item) => (item.classList.toggle('is-active', item === chip), item.setAttribute('aria-pressed', String(item === chip))));
   applyProjectFilter();
 }));
 
