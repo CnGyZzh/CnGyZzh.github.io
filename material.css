@@ -9,4 +9,23 @@ body{font-family:system-ui,-apple-system,'Segoe UI','Microsoft YaHei',sans-serif
 .live-card,.light .live-card,.live-card-wide,.light .live-card-wide,.activity-visual,.activity-notes,.archive-card,.release-item,.light .release-item{background:var(--panel);border:0;border-radius:24px}.live-card strong{overflow-wrap:anywhere}.live-main{flex-wrap:wrap}.live-main small{white-space:normal}.live-card a{color:var(--cyan)}.activity-message{padding:25px 12px}.activity-message>span{font-size:60px;color:var(--cyan)}.activity-message h3{font-size:26px;margin-top:20px}.activity-message p{color:var(--muted);font-size:14px}.note-block p{font-family:inherit}.release-item{margin-bottom:10px}.release-name{overflow-wrap:anywhere}.release-tag{max-width:180px;overflow-wrap:anywhere}.archive-card{padding:24px}.archive-icon{color:var(--cyan)}.project-dialog,.light .project-dialog{background:var(--bg);border:1px solid var(--line);border-radius:32px}.dialog-close{border-radius:50%;min-width:44px;min-height:44px}.dialog-links a,.dialog-feature{border-radius:14px}.site-footer{margin-top:80px;padding-top:32px;padding-bottom:32px}.site-footer p{font-family:inherit}
 @media(max-width:900px){.hero{gap:32px}.monet-art{width:200px;height:200px}.petal{width:105px;height:105px}.main-nav{gap:14px;padding:15px}.hero-console{transform:none}.identity-card{padding:22px}}
 @media(max-width:700px){.site-header,.section-shell{width:calc(100% - 36px)}.site-header{height:auto;min-height:86px;flex-wrap:wrap;gap:12px;padding:16px 0}.main-nav{display:flex;order:3;width:100%;justify-content:space-around;margin:0;gap:8px}.main-nav a{font-size:12px}.header-tools{margin-left:auto}.hero{grid-template-columns:1fr;padding:40px 0;gap:32px;min-height:0}h1{font-size:54px}.hero-console{max-width:430px;width:100%;justify-self:center}.identity-card{padding:24px}.hero-meta{gap:12px}.hero-actions{margin-bottom:24px}.metrics{padding:12px 20px;grid-template-columns:1fr 1fr}.metric,.metric+.metric{padding:16px 12px;border:0;min-height:105px}.content-section{padding-top:64px}.section-heading{gap:18px}.project-card{padding:26px;min-height:0}.live-grid{grid-template-columns:1fr}.live-main{gap:10px}.activity-message h3{font-size:24px}.release-tag{max-width:110px}.site-footer{margin-top:60px}.tool-button{width:44px;height:44px}.hero-console:hover{transform:none}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.hero-console{transform:none}}
+/* Entry motion uses the independent translate property, leaving hover immediate. */
+[data-reveal],.loaded [data-reveal]{opacity:1;transform:none}
+.loaded [data-reveal][data-delay]{transition-delay:0s}
+:root{--motion-ease:cubic-bezier(.2,.8,.2,1)}
+.button,.tool-button,.filter-chip,.inline-button,.dialog-close{position:relative;isolation:isolate;overflow:hidden;cursor:pointer;transition:transform 140ms var(--motion-ease),background-color 140ms ease,color 140ms ease,border-color 140ms ease}
+.button:active,.tool-button:active,.filter-chip:active,.dialog-close:active{transform:scale(.96);transition-duration:65ms}
+.touch-ripple{position:absolute;border-radius:50%;background:currentColor;pointer-events:none;z-index:-1}
+.project-card,.archive-card,.release-item{transition:transform 170ms var(--motion-ease),background-color 170ms ease;box-shadow:none}
+.hero-console{transition:transform 220ms var(--motion-ease)}
+.monet-art{transition:transform 240ms var(--motion-ease)}
+.archive-card:hover{background:var(--panel);border-color:var(--line)}
+@media(hover:hover) and (pointer:fine){
+  .button:hover,.tool-button:hover{transform:translateY(-2px)}
+  .project-card:hover,.archive-card:hover{transform:translateY(-4px);box-shadow:none}
+  .identity-card:hover .monet-art{transform:rotate(5deg) scale(1.025)}
+  .filter-chip:hover:not(.is-active){background:var(--panel);color:var(--cyan)}
+  .button:active,.tool-button:active{transform:scale(.96)}
+}
+@media(hover:none){.button:hover,.project-card:hover,.archive-card:hover,.release-item:hover,.hero-console:hover{transform:none;box-shadow:none}.button:active{transform:scale(.96)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}.hero-console,.identity-card:hover .monet-art{transform:none}}
